@@ -1,0 +1,56 @@
+Version 1.2
+
+Code for 
+   VoG: Summarizing and Understanding Large Graphs
+   Danai Koutra, U Kang, Jilles Vreeken, and Christos Faloutsos
+   http://www.cs.cmu.edu/~dkoutra/papers/VoG.pdf
+
+
+Contact:
+   Danai, danai@cs.cmu.edu
+
+
+To run:
+   type 'make'
+
+
+Difference from Version 1.0:
+   Using dynamic programming and the technique of memoization to 
+   speed up the application of the GREEDY'nFORGET heuristic.
+
+
+Algorithm:
+
+Input: graph G
+Step 1: Subgraph Generation. Generate candidate – possibly
+overlapping – subgraphs using one or more graph decomposition
+methods.
+Step 2: Subgraph Labeling. Characterize each subgraph as a
+perfect structure x \in Omega, or an approximate structure by using
+MDL to ﬁnd the type x that locally minimizes the encoding cost.
+Populate the candidate set C.
+Step 3: Summary Assembly. Use the heuristics PLAIN, TOP10,
+TOP100, GREEDY’NFORGET (Sec. 4.3) to select a non-redundant
+subset from the candidate structures to instantiate the graph model
+M. Pick the model of the heuristic with the lowest description
+cost.
+Return graph summary M and its encoding cost.
+
+
+
+Change Log:
+===========
+
+July 1, 2015
+- removed vpi():  using l2cnk.m to compute the log of n-choose-k efficiently
+  leads to 30x speedup in the chocolate-wiki dataset
+- tic/toc instead of cputime to compute the runtime: following the recommendation at http://www.mathworks.com/help/matlab/ref/cputime.html
+
+January 9, 2015
+- Replaced the config.py file
+
+July 30,  2014
+- Fixed ordering of nodes in cliques
+
+June 15, 2014
+- Made the greedyNforget 100x faster by exploiting memoization
