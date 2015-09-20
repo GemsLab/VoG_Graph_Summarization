@@ -4,7 +4,6 @@
  output_model_top10 = 'DATA';
 
  addpath('STRUCTURE_DISCOVERY');
- addpath('STRUCTURE_DISCOVERY/VariablePrecisionIntegers/VariablePrecisionIntegers');
 
  orig = spconvert(load(input_file));
  orig(max(size(orig)),max(size(orig))) = 0;
@@ -15,7 +14,7 @@
  
  disp('==== Running VoG for structure discovery ====')
  global model; 
- model = struct('code', {}, 'edges', {}, 'nodes1', {}, 'nodes2', {}, 'benefit', {}, 'benefit_notEnc', {}, 'quality', {});
+ model = struct('code', {}, 'edges', {}, 'nodes1', {}, 'nodes2', {}, 'benefit', {}, 'benefit_notEnc', {});
  global model_idx;
  model_idx = 0;
  SlashBurnEncode( orig_sym_nodiag, 2, output_model_greedy, false, false, 3, unweighted_graph);
